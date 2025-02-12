@@ -16,6 +16,8 @@
     background-color: rgba($color-black, .4);
   }
 
+
+
   &__content {
     @include absCenter;
     width: 75%;
@@ -28,7 +30,18 @@
     transform: translate(-50%, -50%) scale(.25);
     transition: all .5s .2s;
     
-    
+    @include respond(tab-potrait) {
+      height: 50rem;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @include respond(phone) {
+      height: auto;
+    }
   }
 
   &__left {
@@ -39,8 +52,10 @@
       width: 40%;
     }
 
-    @include respond(phone){
+    @include respond(tab-potrait){
       display: none;
+      padding: 0;
+      width: 0;
     }
 
 
@@ -55,6 +70,12 @@
     @include respond(tab-landscape){
       width: 60%;
     }
+
+    @include respond(tab-potrait) {
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+    }
   }
 
   &__image{
@@ -65,8 +86,8 @@
       height: 50%;
     }
 
-    @include respond(phone) {
-      display:flex;
+    @include respond(tab-potrait) {
+      display:none;
     }
   }
 
@@ -74,15 +95,25 @@
     @include respond(tab-landscape) {
       font-size: 2.5rem;
     }
-
-    @media only screen and (max-width: 50em){
-      font-size: 2.2rem;
-      margin-top: -1rem;
+  
+    @include respond(tab-potrait){
+      margin-top: 2rem;
     }
 
-    @media only screen and (max-width: 40.625em){
+    @include respond(phone) {
       font-size: 2rem;
-      margin-top: -1rem;
+    }
+
+    @media only screen and (max-width: 28.125em) {
+      font-size: 1.7rem;
+    }
+
+    @media only screen and (max-width: 24.06em) {
+      font-size: 1.5rem;
+    }
+
+    @media only screen and (max-width: 21.56em) {
+      font-size: 1.3rem;
     }
   }
 
@@ -91,12 +122,21 @@
       font-size: 1.3rem;
     }
 
-    @media only screen and (max-width: 50em){
+    @include respond(phone) {
       font-size: 1.1rem;
-      margin-top: -1rem;
     }
 
-    
+    @media only screen and (max-width: 28.125em) {
+      font-size: 1rem;
+    }
+
+    @media only screen and (max-width: 24.06em) {
+      font-size: .8rem;
+    }
+
+    @media only screen and (max-width: 21.56em) {
+      font-size: .7rem;
+    }
   }
 
   &__text {
@@ -116,32 +156,54 @@
     @include respond(tab-landscape) {
       font-size: 1.2rem;
     }
-    @include respond(tab-landscape) {
-      font-size: 1.2rem;
-    }
 
-    @media only screen and (max-width: 50em){
-      font-size: 1rem;
+    @include respond(tab-potrait) {
+      font-size: 1.1;
+      display: flex;
+      hyphens: manual;
+      margin-bottom: 2rem;
     }
 
     @include respond(phone) {
-      font-size: 1.1rem;
+      font-size: 1rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @media only screen and (max-width: 28.125em) {
+      font-size: .9rem;
     }
   }
 
-  &__btn{
-    @include respond(tab-potrait) {
-      padding: 1rem 2rem;
-    }
+  &__btn,
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 100px;
+    transition: all .2s;
+    position: relative;
+    font-size: $default-font-size;
 
-    @media only screen and (max-width: 50em){
-      margin-top: -2rem;
-      padding: 0;
+    border: none;
+    cursor: pointer;
+
+    @include respond(tab-potrait) {
+      margin-bottom: 2rem;
     }
 
     @include respond(phone) {
-      padding: 0;
+      padding: 1rem 3.5rem;
     }
+
+    @media only screen and (max-width: 28.125em) {
+      font-size: 1rem;
+      padding: .8rem 3.2rem;
+    }
+
   }
 
   // Open state
